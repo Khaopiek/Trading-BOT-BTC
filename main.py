@@ -40,8 +40,8 @@ from telegram_message_sender import send_message
 # Your original global variables
 # Define the moving averages
 MA1 = [1]
-MA2 = [50]
-MA3 = [200]
+MA2 = [20]
+MA3 = [100]
 
 # Define the indicators
 I1 = 0
@@ -79,10 +79,10 @@ def on_message(ws, message):
     # Buy logic
     if I1 + I2 + I3 == 2:
         # Fetch the available balance (assuming using USDT for simplicity)
-        balance = get_balance("USDT")
+        balance = get_balance("TUSD")
         order_amount = calculate_order_amount(balance, ORDER_PERCENTAGE)  # Using the predefined ORDER_PERCENTAGE
         # Place buy order (using a placeholder for symbol and order type for simplicity)
-        order = place_order("BTCUSDT", "buy", order_amount)
+        order = place_order("BTCTUSD", "buy", order_amount)
         
         # Update the last buy transaction details
         last_buy_price = order['fills'][0]['price']
